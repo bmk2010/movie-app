@@ -14,7 +14,7 @@ function Slider() {
         spaceBetween={50}
         slidesPerView={1}
         onSwiper={(swiper) => {
-          setSwiperInstance(swiper); // Swiper instance'ni saqlash
+          setSwiperInstance(swiper);
         }}
       >
         <SwiperSlide>
