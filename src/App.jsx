@@ -1,7 +1,3 @@
-import { useEffect, useState } from "react";
-import Render from "./components/Render";
-import Slider from "./components/Slider";
-import MainLayout from "./layouts/Main_layout/index";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LoginPage from "./pages/Auth";
 import Home from "./pages/Home";
