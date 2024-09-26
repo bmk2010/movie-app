@@ -17,7 +17,7 @@ function Render({data = []}) {
                 style={{
                   transitionProperty: "all",
                   transitionTimingFunction: "cubic - bezier(0.4, 0, 0.2, 1)",
-                  "transition-duration": "0.2s",
+                  "transitionDuration": "0.2s",
                 }}
                 className="font-medium w-[188px] text-[24px] group-hover:font-extrabold"
               >

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import MainLayout from "../layouts/Main_layout";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import UzFlag from "../assets/Uz.svg";
 import { useMask } from "@react-input/mask";
 import { toast, ToastContainer } from "react-toastify";
@@ -9,6 +9,12 @@ import "react-toastify/dist/ReactToastify.css";
 function LoginPage() {
   const [telNumber, setTelNumber] = useState("");
   const inputRef = useMask({ mask: "__  ___ __ __", replacement: { _: /\d/ } });
+  const navigate = useNavigate();
+  const Token = localStorage.getItem("Token");
+
+  if (Token){
+    navigate("/")
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -23,20 +29,9 @@ function LoginPage() {
         beginNum == 88 ||
         beginNum == 33
       ) {
-        fetch("https://fakestoreapi.com/auth/login", {
-          method: "POST",
-          body: JSON.stringify({
-            username: "mor_2314",
-            password: "83r5^_",
-          }),
-        })
-          .then((res) => {
-            if (!res.ok) {
-              alert("error");
-            }
-            res.json();
-          })
-          .then((json) => localStorage.setItem("Token", json.token));
+        navigate("/login/sms");
+        localStorage.setItem("telNumber", telNumber)
+        localStorage.setItem("Token", telNumber)
       } else {
         toast.error("Raqam xato kiritildi");
       }

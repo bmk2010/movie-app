@@ -7,7 +7,7 @@ function Home() {
   const [movieData, setMovieData] = useState([]);
 
   useEffect(() => {
-    fetch("https://66eef13b3ed5bb4d0bf26781.mockapi.io/api/v1/movies")
+    fetch("https://66ec461f2b6cf2b89c5decaa.mockapi.io/api/v1/movies")
       .then((res) => res.json())
       .then((data) => {
         setMovieData(data);
