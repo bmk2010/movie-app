@@ -1,13 +1,17 @@
 import React from "react";
 import logo from "../assets/logo.svg";
 import afisha from "../assets/afisha.svg";
+import activeAfisha from "../assets/whiteMain.svg";
 import seans from "../assets/Transfer.svg";
 import bileti from "../assets/Monitoring.svg";
 import search from "../assets/search.svg";
-import { Link } from "react-router-dom";
+import activeSeans from "../assets/redSeans.svg";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Header = () => {
   const Token = localStorage.getItem("Token");
+  const location = useLocation();
+  const navigate = useNavigate();
 
   return (
     <div className="px-[90px] flex justify-between mb-3 items-center">
@@ -17,11 +21,11 @@ const Header = () => {
         </div>
       </Link>
       <div className="flex">
-        <button>
-          <img src={afisha} alt="" />
+        <button onClick={() => navigate("/")}>
+          <img src={location.pathname === '/' ? afisha : activeAfisha} alt="" />
         </button>
-        <button>
-          <img src={seans} alt="" />
+        <button onClick={() => navigate("/seans")}>
+          <img src={location.pathname === '/seans' ? activeSeans : seans} alt="" />
         </button>
         <button>
           <img src={bileti} alt="" />

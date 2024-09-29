@@ -3,6 +3,8 @@ import LoginPage from "./pages/Auth";
 import Home from "./pages/Home";
 import SmsPage from "./pages/Sms"
 import ProfilePage from "./pages/Profile";
+import SeansPage from "./pages/seans";
+import DetailPage from "./pages/Detail";
 
 function App() {
   return (
@@ -13,6 +15,8 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/login/sms" element={<SmsPage />} />
           <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/seans" element={<SeansPage />} />
+          <Route path="/:id" element={<DetailPage />} />
         </Routes>
       </BrowserRouter>
     </div>
