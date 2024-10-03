@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";  
 import LoginPage from "./pages/Auth";
 import Home from "./pages/Home";
 import SmsPage from "./pages/Sms";
@@ -6,6 +6,7 @@ import ProfilePage from "./pages/Profile";
 import SeansPage from "./pages/seans";
 import DetailPage from "./pages/Detail";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import Bileti from "./pages/Bileti";
 
 const queryClient = new QueryClient();
 
@@ -21,6 +22,7 @@ function App() {
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/seans" element={<SeansPage />} />
             <Route path="/:id" element={<DetailPage />} />
+            <Route path="/bilet" element={<Bileti />} />
           </Routes>
         </BrowserRouter>
       </div>

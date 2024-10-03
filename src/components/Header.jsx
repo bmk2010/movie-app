@@ -6,6 +6,7 @@ import seans from "../assets/Transfer.svg";
 import bileti from "../assets/Monitoring.svg";
 import search from "../assets/search.svg";
 import activeSeans from "../assets/redSeans.svg";
+import activeBilet from "../assets/active_bilet.svg"
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Header = () => {
@@ -27,9 +28,9 @@ const Header = () => {
         <button onClick={() => navigate("/seans")}>
           <img src={location.pathname === '/seans' ? activeSeans : seans} alt="" />
         </button>
-        <button>
-          <img src={bileti} alt="" />
-        </button>{" "}
+        <button onClick={() => navigate("/bilet")}>
+          <img src={location.pathname === '/bilet' ? activeBilet : bileti} alt="" />
+        </button>
         <button>
           <img src={search} alt="" />
         </button>
