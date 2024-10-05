@@ -15,6 +15,8 @@ const MainLayout = (prop) => {
         <div className="text-center">Нажимая на кнопку Регистрация</div>
       ) : location.pathname === "/profile" ? (
         ""
+      ) : location.pathname === "/search" ? (
+        ""
       ) : (
         <Footer />
       )}

@@ -5,14 +5,17 @@ import activeAfisha from "../assets/whiteMain.svg";
 import seans from "../assets/Transfer.svg";
 import bileti from "../assets/Monitoring.svg";
 import search from "../assets/search.svg";
+import activeSearch from "../assets/active_search.svg"
 import activeSeans from "../assets/redSeans.svg";
 import activeBilet from "../assets/active_bilet.svg"
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Header = () => {
-  const Token = localStorage.getItem("Token");
   const location = useLocation();
   const navigate = useNavigate();
+  const isLogin = useSelector(prev => prev.auth.token)
+  
 
   return (
     <div className="px-[90px] flex justify-between mb-3 items-center">
@@ -31,8 +34,8 @@ const Header = () => {
         <button onClick={() => navigate("/bilet")}>
           <img src={location.pathname === '/bilet' ? activeBilet : bileti} alt="" />
         </button>
-        <button>
-          <img src={search} alt="" />
+        <button onClick={() => navigate("/search")}>
+          <img src={location.pathname === '/search' ? activeSearch : search} alt="" />
         </button>
       </div>
       <div className="flex gap-[20px]">
@@ -40,9 +43,9 @@ const Header = () => {
           <option value="ru">RU</option>
           <option value="uz">UZ</option>
         </select>
-        <Link to={Token ? '/profile' : '/login'}>
+        <Link to={isLogin ? '/profile' : '/login'}>
           <button className="bg-[#C61F1F] px-[67px] py-[18px] rounded-[12px]">
-            {Token ? "профиль" : "Войти"}
+            {isLogin ? "профиль" : "Войти"}
           </button>
         </Link>
       </div>

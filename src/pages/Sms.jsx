@@ -2,13 +2,17 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import MainLayout from "../layouts/Main_layout";
 import OtpInput from "react-otp-input";
+import { useDispatch, useSelector } from "react-redux";
 
 function SmsPage() {
   const [smsValue, setSmsValue] = useState("");
-
+  const dispatch = useDispatch();
   const Token = localStorage.getItem("Token");
-  const number = localStorage.getItem("telNumber")
+  const number = localStorage.getItem("telNumber");
   const navigate = useNavigate();
+  const store = useSelector(prev=> prev)
+  console.log(store);
+  
 
   const handleLogin = () => {
     fetch("https://api.escuelajs.co/api/v1/auth/login", {
@@ -29,7 +33,8 @@ function SmsPage() {
       })
       .then((json) => {
         localStorage.setItem("Token", json.access_token);
-        navigate('/')
+        navigate("/");
+        dispatch({ type: "login", payload: json.access_token });
       });
   };
 

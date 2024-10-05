@@ -5,10 +5,13 @@ import logout from "../assets/logout.svg";
 import { toast, ToastContainer } from "react-toastify";
 import { useNavigate } from "react-router";
 import "react-toastify/dist/ReactToastify.css";
+import { useDispatch } from "react-redux";
 
 function ProfilePage() {
+  const dispatch = useDispatch();
   const navigate = useNavigate("/");
   const handleLogout = () => {
+    dispatch({ type: "logout" });
     localStorage.removeItem("Token");
     const Token = localStorage.getItem("Token");
 
