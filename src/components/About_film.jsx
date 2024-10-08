@@ -3,8 +3,13 @@ import imd from "../assets/imd.svg";
 import kinopoisk from "../assets/kinopoisk.svg";
 import Cinema_data from "./Cinema_data";
 import { BsTicketPerforatedFill } from "react-icons/bs";
+import useStore from "../redux/zustand";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-function About_film({set = () => {}}) {
+function About_film({ set = () => {}, data }) {
+  const { setTicket, tickets } = useStore();
+
   return (
     <div className="max-w-[380px] w-full mx-auto mt-12">
       <div className="flex gap-5 mb-12">
@@ -27,12 +32,23 @@ function About_film({set = () => {}}) {
             Продолжение приключений легендарного Воина Дракона, его верных
             друзей и наставника (часть вторая)
           </p>
-          <button onClick={() => set(1)} className="w-full bg-[#C61F1F] flex justify-center items-center gap-2 py-4 rounded-xl">
+          <button
+            onClick={() => {
+              localStorage.setItem("bilet", JSON.stringify(data))
+              setTicket(data);
+              toast.success(
+                "Malumotingiz saqlandi, uni tickets page dan ko'ra olasiz"
+              );
+            }}
+            className="w-full bg-[#C61F1F] flex justify-center items-center gap-2 py-4 rounded-xl"
+          >
             <BsTicketPerforatedFill />
             Купить билет
           </button>
         </div>
       </div>
+
+      <ToastContainer />
     </div>
   );
 }

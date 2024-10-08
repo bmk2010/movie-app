@@ -57,7 +57,7 @@ const DetailPage = () => {
           О фильме
         </button>
       </div>
-      {tab == 1 ? <Bileti /> : <About_film set={setTab} />}
+      {tab == 1 ? <Bileti /> : <About_film set={setTab} data={movie} />}
     </MainLayout>
   );
 };
