@@ -8,7 +8,7 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function About_film({ set = () => {}, data }) {
-  const { setTicket, tickets } = useStore();
+  const { setTicket } = useStore();
 
   return (
     <div className="max-w-[380px] w-full mx-auto mt-12">
@@ -34,7 +34,6 @@ function About_film({ set = () => {}, data }) {
           </p>
           <button
             onClick={() => {
-              localStorage.setItem("bilet", JSON.stringify(data))
               setTicket(data);
               toast.success(
                 "Malumotingiz saqlandi, uni tickets page dan ko'ra olasiz"

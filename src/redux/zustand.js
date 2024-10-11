@@ -2,10 +2,9 @@ import { create } from "zustand";
 import { devtools, persist } from "zustand/middleware";
 
 let useStore = (set) => {
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-    const storage = localStorage.getItem("bilet")
+    // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
     return {
-        tickets: [JSON.parse(storage)] || [],
+        tickets: [],
         setTicket: (ticket) => set((state) => ({tickets:[...state.tickets,ticket]})),
     };
 };

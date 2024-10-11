@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import OneTicket from "../components/OneTicket";
 import Panda from "../assets/panda-cin.png";
 import panda from "../assets/kung.png";
@@ -7,6 +7,7 @@ import useStore from "../redux/zustand";
 
 function Render_bilets({ openFunc }) {
   const { tickets } = useStore();
+  console.log("render");
 
   return (
     <div className="flex flex-col gap-4">
@@ -31,8 +32,9 @@ function Render_bilets({ openFunc }) {
         buy={false}
         history={false}
       />
-      {tickets.map((ticket) => (
+      {tickets.map((ticket, i) => (
         <OneTicket
+          key={i}
           open={openFunc}
           title={ticket.title}
           img={ticket.img}
@@ -44,4 +46,11 @@ function Render_bilets({ openFunc }) {
   );
 }
 
-export default Render_bilets;
+const MemoizedComponent = memo(Render_bilets, (prevProps, nextProps) => {
+  return (
+    prevProps.openFunc === nextProps.openFunc &&
+    prevProps.tickets === nextProps.tickets
+  );
+});
+
+export default MemoizedComponent;
