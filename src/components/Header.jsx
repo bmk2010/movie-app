@@ -28,9 +28,9 @@ const Header = () => {
         <button onClick={() => navigate("/")}>
           <img src={location.pathname === '/' ? afisha : activeAfisha} alt="" />
         </button>
-        {/* <button onClick={() => navigate("/seans")}>
+        <button onClick={() => navigate("/seans")}>
           <img src={location.pathname === '/seans' ? activeSeans : seans} alt="" />
-        </button> */}
+        </button>
         <button onClick={() => navigate("/bilet")}>
           <img src={location.pathname === '/bilet' ? activeBilet : bileti} alt="" />
         </button>
